@@ -5,7 +5,7 @@ import { type ReactNode } from "react";
 import { Separator } from "../ui/separator";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
-import { Eye, FunctionSquare } from "lucide-react";
+import { Eye, FileCog } from "lucide-react";
 
 interface PipelineDataCardProps {
   id: string;
@@ -55,11 +55,7 @@ function PipelineDataCard(props: PipelineDataCardProps) {
           </Link>
           <Link href={`/pipelines/launch-jupyter-lab/${id}`} className="w-full">
             <Button variant={"outline"} className="w-full">
-              <FunctionSquare
-                strokeWidth={2.5}
-                size={22}
-                className=" mr-2 text-blue-600"
-              />
+              <FileCog size={22} className=" mr-2" />
               Launch JupyterLab
             </Button>
           </Link>

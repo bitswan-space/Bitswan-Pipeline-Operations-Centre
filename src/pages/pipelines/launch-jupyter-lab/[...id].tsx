@@ -27,7 +27,7 @@ const JupyterLabLaunchPage: NextPageWithLayout<JupyterLabLaunchPageProps> = ({
     message: string;
   };
 
-  const {} = useMQTTRequestResponseSubscription<JupyterLabLaunchResponse>({
+  useMQTTRequestResponseSubscription<JupyterLabLaunchResponse>({
     queryKey: "jupyterlab-launch",
     requestResponseTopicHandler: {
       requestTopic: "test/jupyterlab/launch/subscribe",
@@ -87,7 +87,7 @@ const JupyterLabLaunchPage: NextPageWithLayout<JupyterLabLaunchPageProps> = ({
         <div className="space-x-4 py-4 text-sm font-semibold text-neutral-600">
           {getBreadcrumbs(id as string[])}
         </div>
-        <div className="h-5/6 overflow-auto rounded-md bg-black/90 p-4 font-mono text-xs text-white/90">
+        <div className="h-5/6 overflow-auto overflow-y-scroll rounded-md bg-black/90 p-4 font-mono text-xs text-white/90">
           <ul className=" space-y-2">
             {logMessages.map((log, index) => (
               <li key={index}>{log}</li>

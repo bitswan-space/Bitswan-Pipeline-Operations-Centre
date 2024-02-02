@@ -1,4 +1,8 @@
-import { ChevronDownIcon, ChevronRight, FunctionSquare } from "lucide-react";
+import {
+  ChevronDownIcon,
+  ChevronRight,
+  FileCog,
+} from "lucide-react";
 import {
   type ColumnFiltersState,
   type ExpandedState,
@@ -147,16 +151,9 @@ export const columns = [
     id: "properties_name",
     cell: ({ row }) => {
       return (
-        <Link
-          href={`/pipelines/launch-jupyter-lab/${row.original._key}`}
-          className="text-blue-600"
-        >
-          <Button variant={"ghost"}>
-            <FunctionSquare
-              strokeWidth={2.5}
-              size={22}
-              className=" text-blue-600"
-            />
+        <Link href={`/pipelines/launch-jupyter-lab/${row.original._key}`}>
+          <Button variant={"outline"}>
+            <FileCog size={20} />
           </Button>
         </Link>
       );
