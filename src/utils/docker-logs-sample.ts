@@ -1,0 +1,17 @@
+export const jupyterLabLogs: string[] = [
+  "[I 09:00:00.000 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret",
+  "[I 09:00:01.123 LabApp] JupyterLab extension loaded from /opt/conda/lib/python3.8/site-packages/jupyterlab",
+  "[I 09:00:01.123 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab",
+  "[I 09:00:01.456 ServerApp] jupyterlab | extension was successfully linked.",
+  "[I 09:00:01.789 NotebookApp] Serving notebooks from local directory: /home/jovyan",
+  "[I 09:00:01.789 NotebookApp] Jupyter Notebook 6.1.4 is running at:",
+  "[I 09:00:01.789 NotebookApp] http://127.0.0.1:8888/?token=<your_token_here>",
+  "[I 09:00:01.789 NotebookApp]  or http://<container_id>:8888/?token=<your_token_here>",
+  "[I 09:00:01.789 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).",
+  "[C 09:00:01.789 NotebookApp] ",
+  "    To access the notebook, open this file in a browser:",
+  "        file:///home/jovyan/.local/share/jupyter/runtime/nbserver-1-open.html",
+  "    Or copy and paste one of these URLs:",
+  "        http://127.0.0.1:8888/?token=<your_token_here>",
+  "     or http://<container_id>:8888/?token=<your_token_here>",
+];
