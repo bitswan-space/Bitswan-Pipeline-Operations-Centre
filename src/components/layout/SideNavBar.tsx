@@ -115,12 +115,16 @@ export function SideBarNavItem(props: SideBarNavItemProps) {
   };
 
   return (
-    <Link href={url ?? "/"} target={isExternal ? "_blank" : undefined}>
+    <Link
+      href={url ?? "/"}
+      target={isExternal ? "_blank" : undefined}
+      className="w-full"
+    >
       <Button
         title={title}
         variant={"ghost"}
         size={expanded ? "lg" : "default"}
-        className={clsx("flex gap-3 text-neutral-100", {
+        className={clsx("flex w-full gap-3 text-neutral-100", {
           "rounded-none border-l-4 border-blue-500 p-6 text-blue-500":
             active && !expanded,
           "ml-1 rounded-none p-6 text-neutral-50": !expanded && !active,
@@ -162,7 +166,7 @@ export function MenuItemList(props: MenuItemListProps) {
         return RefreshCcw;
       case "ML Ops":
         return BrainCircuit;
-      case "Kafka":
+      case "Kaka":
         return SiApachekafka;
       default:
         return ArrowUpRightSquare;
