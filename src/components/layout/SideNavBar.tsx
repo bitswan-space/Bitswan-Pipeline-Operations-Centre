@@ -5,6 +5,7 @@ import {
   ChevronRight,
   Menu,
   BrainCircuit,
+  ArrowUpRightSquare,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -164,7 +165,7 @@ export function MenuItemList(props: MenuItemListProps) {
       case "Kafka":
         return SiApachekafka;
       default:
-        return RefreshCcw;
+        return ArrowUpRightSquare;
     }
   };
 
