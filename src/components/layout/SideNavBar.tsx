@@ -166,7 +166,7 @@ export function MenuItemList(props: MenuItemListProps) {
         return RefreshCcw;
       case "ML Ops":
         return BrainCircuit;
-      case "Kaka":
+      case "Kafka":
         return SiApachekafka;
       default:
         return ArrowUpRightSquare;
