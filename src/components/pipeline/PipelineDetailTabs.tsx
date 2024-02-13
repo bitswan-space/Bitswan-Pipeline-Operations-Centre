@@ -166,7 +166,7 @@ function PipelineSummary(props: PipelineSummaryProps) {
       </Card>
       <Card className="rounded-md">
         <CardHeader>
-          <CardTitle className="text-xl">Pipeline Metrics</CardTitle>
+          <CardTitle className="text-xl">Metrics</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex w-full flex-wrap gap-2">
