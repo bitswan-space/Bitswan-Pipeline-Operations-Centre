@@ -40,8 +40,8 @@ const PipelineEditorLaunchPage: NextPageWithLayout<
   useMQTTSubscription<PipelineEditorLaunchResponse>({
     queryKey: `pipeline-editor-launch-${id}`,
     requestResponseTopicHandler: {
-      requestTopic: `${id}/pipeline-editor/launch/subscribe`,
-      subscriptionTopic: `${id}/pipeline-editor/launch`,
+      requestTopic: `${id}/editor/launch/subscribe`,
+      subscriptionTopic: `${id}/editor/launch`,
       requestMessageType: "json",
       requestMessage: {
         count: 1,
@@ -55,7 +55,7 @@ const PipelineEditorLaunchPage: NextPageWithLayout<
   useMQTTSubscription<PipelineEditorRedirectResponse>({
     queryKey: "pipeline-editor-redirect",
     requestResponseTopicHandler: {
-      subscriptionTopic: `${id}/pipeline-editor/redirect`,
+      subscriptionTopic: `${id}/editor/redirect`,
       requestMessageType: "json",
       requestMessage: {
         count: 1,
@@ -71,7 +71,6 @@ const PipelineEditorLaunchPage: NextPageWithLayout<
     const { redirect, url } = redirectParams ?? {};
     if (redirect && url) {
       window.open(url, "_blank");
-      setRedirectParams(undefined);
     }
   }, [redirectParams]);
 
