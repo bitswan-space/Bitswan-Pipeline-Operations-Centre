@@ -1,12 +1,48 @@
 variables:
   DOCKER_IMAGE: pipeline-operations-centre
+  DOCKER_REGISTRY: public.ecr.aws/bitswan
+  AWS_DEFAULT_REGION: us-east-1
+  DOCKER_HOST: tcp://docker:2375
 
 stages:
-- test
-- build
+  - test
+  - build
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
 sast:
   stage: test
-include:
-- template: Security/SAST.gitlab-ci.yml
-- project: 'LibertyAces/Product/bitswanmonorepo'
-  file: 'cicd/docker-build-public.yml'
+
+build:
+  stage: build
+  only:
+    - master
+    - main
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  before_script:
+    - amazon-linux-extras install docker
+    - yum install -y git
+    - aws --version
+    - docker --version
+  script:
+    - YEAR=$(date +%Y)
+    - COMMIT_HASH=$(git rev-parse --short HEAD)
+    - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $DOCKER_REGISTRY
+    - docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:latest \
+      --build-arg NEXT_PUBLIC_COMMIT_HASH=$COMMIT_HASH \
+      --build-arg NEXT_PUBLIC_BUILD_NO=$CI_JOB_ID .
+    - TAG=$YEAR-$CI_PIPELINE_IID-git-$COMMIT_HASH
+    - IMAGE_ID=$(docker images --no-trunc -q $DOCKER_REGISTRY/$DOCKER_IMAGE:latest)
+    - ID_TAG=$(echo $IMAGE_ID | sed 's/:/_/g')
+    - docker tag $DOCKER_REGISTRY/$DOCKER_IMAGE:latest $DOCKER_REGISTRY/$DOCKER_IMAGE:$TAG
+    - docker tag $DOCKER_REGISTRY/$DOCKER_IMAGE:latest $DOCKER_REGISTRY/$DOCKER_IMAGE:$ID_TAG
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:latest
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$TAG
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$ID_TAG
+    - echo "Now you can use $DOCKER_REGISTRY/$DOCKER_IMAGE:$ID_TAG in your docker-compose file."
+
