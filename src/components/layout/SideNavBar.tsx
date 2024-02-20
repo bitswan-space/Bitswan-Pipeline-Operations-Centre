@@ -281,7 +281,13 @@ export function MobileNavSheet() {
   );
 }
 
-function BuildTags({ expanded }: { expanded: boolean }) {
+export type BuildTagsProps = {
+  expanded: boolean;
+};
+
+function BuildTags(props: BuildTagsProps) {
+  const { expanded } = props;
+
   return (
     <div
       className={clsx(
