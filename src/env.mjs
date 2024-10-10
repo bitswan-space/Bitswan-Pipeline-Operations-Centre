@@ -35,8 +35,11 @@ export const env = createEnv({
     KEYCLOAK_POST_LOGOUT_REDIRECT_URI: z.string().url(),
 
     // MQTT
-    MQTT_URL: z.string().url(),
     CDS_API_URL: z.string().url(),
+
+    // EMQX
+    EMQX_JWT_SECRET: z.string().min(1),
+    EMQX_MQTT_URL: z.string(),
   },
 
   /**
@@ -78,7 +81,6 @@ export const env = createEnv({
       process.env.KEYCLOAK_POST_LOGOUT_REDIRECT_URI,
 
     // MQTT
-    MQTT_URL: process.env.MQTT_URL,
     CDS_API_URL: process.env.CDS_API_URL,
 
     NEXT_PUBLIC_NODE_ENV: process.env.NODE_ENV,
@@ -88,6 +90,10 @@ export const env = createEnv({
     // AoC Backend
     NEXT_PUBLIC_BITSWAN_BACKEND_API_URL:
       process.env.NEXT_PUBLIC_BITSWAN_BACKEND_API_URL,
+
+    // EMQX
+    EMQX_JWT_SECRET: process.env.EMQX_JWT_SECRET,
+    EMQX_MQTT_URL: process.env.EMQX_MQTT_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
