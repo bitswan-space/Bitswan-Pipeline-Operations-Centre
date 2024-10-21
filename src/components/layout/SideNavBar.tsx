@@ -50,7 +50,9 @@ const SideNavBar = (props: SideNavBarProps) => {
   return (
     <div className="z-10 h-full min-h-max bg-neutral-800 py-6 text-slate-400">
       <button
-        className="z-60 absolute -right-2 top-12 rounded-full bg-neutral-800 text-white shadow-lg"
+        className={clsx("z-60 absolute -right-2 top-12 rounded-full bg-neutral-800 text-white shadow-lg", {
+          "rotate-180": expanded,
+        })}
         onClick={handleExpand}
       >
         <ChevronRight size={28} />
